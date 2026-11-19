@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Construire l'image
-        run: docker build -t mini-tp-cicd:${{ github.sha }} .
+        run: docker build -f app/Dockerfile -t mini-tp-cicd:${{ github.sha }} app/
 
       - name: Démarrer le conteneur
         run: docker run -d --name mini-tp-web -p 8081:80 mini-tp-cicd:${{ github.sha }}
